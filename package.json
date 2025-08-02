@@ -1,0 +1,84 @@
+{
+  "name": "focusfuel",
+  "version": "1.0.0",
+  "description": "AI-powered productivity suite for distraction blocking, content summarization, and digital well-being",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:electron\" \"npm run dev:extension\"",
+    "dev:electron": "electron .",
+    "dev:extension": "webpack --mode development --watch",
+    "build": "npm run build:electron && npm run build:extension",
+    "build:electron": "electron-builder",
+    "build:extension": "webpack --mode production",
+    "test": "jest",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "start": "electron ."
+  },
+  "keywords": [
+    "productivity",
+    "focus",
+    "ai",
+    "distraction-blocker",
+    "pomodoro",
+    "digital-wellbeing"
+  ],
+  "author": "FocusFuel Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.254",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "concurrently": "^8.2.2",
+    "css-loader": "^7.1.2",
+    "electron": "^27.1.0",
+    "electron-builder": "^24.6.4",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.7.0",
+    "postcss-loader": "^8.1.1",
+    "sharp": "^0.34.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4",
+    "axios": "^1.6.2",
+    "electron-store": "^8.1.0",
+    "openai": "^4.20.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "recharts": "^2.8.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.3.6",
+    "zustand": "^4.4.7"
+  },
+  "build": {
+    "appId": "com.focusfuel.app",
+    "productName": "FocusFuel",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
